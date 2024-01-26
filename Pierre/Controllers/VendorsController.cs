@@ -38,10 +38,18 @@ namespace Pierre.Controllers
     }
 
     [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string orderName, string orderDates, Dictionary<int, string> orderDetails, int orderPrice, bool orderHasPaid)
+    public ActionResult Create(int vendorId, string orderName, string orderDates, string[] detailQuantities, string[] detailItems, int orderPrice, bool orderHasPaid)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Vendor foundVendor = Vendor.FindVendor(vendorId);
+      Dictionary<int, string> orderDetails = new Dictionary<int, string>();
+      for (int i = 0; i < detailQuantities.Length; i++)
+      {
+        if (int.TryParse(detailQuantities[i], out int quantity))
+        {
+          orderDetails.Add(quantity, detailItems[i]);
+        }
+      }
       Order newOrder = new Order(orderName, orderDates, orderDetails, orderPrice, orderHasPaid);
       foundVendor.AddOrder(newOrder);
       List<Order> vendorOrders = foundVendor.Orders;

@@ -4,6 +4,7 @@
 
 @using Pierre.Models;
 <h3>@Model["vendor"].Name Orders</h3>
+<p>Deliver To: @Model["vendor"].Location</p>
 
 <ul>
     @foreach (Order order in @Model["orders"])
