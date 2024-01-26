@@ -19,6 +19,11 @@ namespace Pierre.Models
             Id = _instances.Count;
         }
 
+        public static Order FindOrder(int id)
+        {
+            return _instances[id - 1];
+        }
+
         public static void ClearAll()
         {
             _instances.Clear();

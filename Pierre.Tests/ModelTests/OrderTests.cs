@@ -41,5 +41,20 @@ namespace Pierre.Tests
       newOrder.Name = name;
       Assert.AreEqual(newOrder.Name, name);
     }
+
+    [TestMethod]
+    public void FindOrder_ReturnsOrderById_Order()
+    {
+      string name = "usual";
+      string dates = "every monday morning";
+      Dictionary<int, string> details = new Dictionary<int, string>() { { 30, "croissants" }, { 10, "baguettes" } };
+      Order suziesOrder = new(name, dates, details);
+      string name2 = "unique order";
+      string dates2 = "may 3rd";
+      Dictionary<int, string> details2 = new Dictionary<int, string>() { { 100, "croissants" }, { 5, "baguettes" } };
+      Order starbucksOrder = new(name2, dates2, details2);
+      Order foundOrder = Order.FindOrder(2);
+      Assert.AreEqual(starbucksOrder, foundOrder);
+    }
   }
 }
