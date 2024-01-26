@@ -6,8 +6,13 @@ using System;
 namespace Pierre.Tests
 {
   [TestClass]
-  public class VendorTests
+  public class VendorTests : IDisposable
   {
+    public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
+
     [TestMethod]
     public void VendorConstructor_CreateInstanceOfVendor_Vendor()
     {
@@ -40,6 +45,15 @@ namespace Pierre.Tests
         List<Order> expected = new List<Order> {newOrder};
         suziesCafe.AddOrder(newOrder);
         CollectionAssert.AreEqual(expected, suziesCafe.Orders);
+    }
+
+    [TestMethod]
+    public void FindVendor_ReturnsVendorById_Vendor()
+    {
+        Vendor suziesCafe = new("Suzie's Cafe");
+        Vendor starbucks = new("Starbucks");
+        Vendor foundVendor = Vendor.FindVendor(2);
+        Assert.AreEqual(starbucks, foundVendor);
     }
   }
 }

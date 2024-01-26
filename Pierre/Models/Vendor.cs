@@ -22,6 +22,11 @@ namespace Pierre.Models
             Orders.Add(order);
         }
 
+        public static Vendor FindVendor(int id)
+        {
+            return _instances[id - 1];
+        }
+
         public static void ClearAll()
         {
             _instances.Clear();
