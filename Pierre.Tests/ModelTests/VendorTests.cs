@@ -31,5 +31,15 @@ namespace Pierre.Tests
       suziesCafe.Name = name;
       Assert.AreEqual(suziesCafe.Name, name);
     }
+
+    [TestMethod]
+    public void AddOrder_AddOrderToOrders_List()
+    {
+        Vendor suziesCafe = new("Suzie's Cafe");
+        Order newOrder = new("30 croissants");
+        List<Order> expected = new List<Order> {newOrder};
+        suziesCafe.AddOrder(newOrder);
+        CollectionAssert.AreEqual(expected, suziesCafe.Orders);
+    }
   }
 }
