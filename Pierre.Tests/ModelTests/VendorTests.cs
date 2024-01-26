@@ -22,5 +22,14 @@ namespace Pierre.Tests
       Vendor suziesCafe = new(name);
       Assert.AreEqual(suziesCafe.Name, name);
     }
+
+    [TestMethod]
+    public void SetVendorDetails_SetsVendorProperties()
+    {
+      string name = "New and Improved Suzie's Cafe";
+      Vendor suziesCafe = new("Suzie's Cafe");
+      suziesCafe.Name = name;
+      Assert.AreEqual(suziesCafe.Name, name);
+    }
   }
 }
