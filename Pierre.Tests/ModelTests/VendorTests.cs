@@ -55,5 +55,14 @@ namespace Pierre.Tests
         Vendor foundVendor = Vendor.FindVendor(2);
         Assert.AreEqual(starbucks, foundVendor);
     }
+
+    [TestMethod]
+    public void GetAllVendors_ReturnsInstances_List()
+    {
+        Vendor suziesCafe = new("Suzie's Cafe");
+        Vendor starbucks = new("Starbucks");
+        List<Vendor> expected = new List<Vendor> {suziesCafe, starbucks};
+        CollectionAssert.AreEqual(expected, Vendor.GetAll());
+    }
   }
 }
