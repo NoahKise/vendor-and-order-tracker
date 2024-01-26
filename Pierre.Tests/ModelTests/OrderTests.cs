@@ -20,5 +20,15 @@ namespace Pierre.Tests
       Order newOrder = new(name, dates, details);
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
+
+    [TestMethod]
+    public void GetOrderDetails_ReturnsOrderDetails_String()
+    {
+      string name = "usual";
+      string dates = "every monday morning";
+      Dictionary<int, string> details = new Dictionary<int, string>() { { 30, "croissants" }, { 10, "baguettes" } };
+      Order newOrder = new(name, dates, details);
+      Assert.AreEqual(newOrder.Name, name);
+    }
   }
 }
