@@ -1,28 +1,26 @@
 @{
-    Layout="_Layout";
+  Layout = "_Layout";
 }
 
 @using Pierre.Models;
 <h3>@Model["vendor"].Name Orders</h3>
 <p>Deliver To: @Model["vendor"].Location</p>
 
-<ul>
-    @foreach (Order order in @Model["orders"])
+@foreach (Order order in @Model["orders"])
+{
+  <h2>@order.Name</h2>
+  <p>@order.Dates</p>
+  
+  <p>Items:</p>
+  <ul>
+  @foreach (var detail in order.Details)
     {
-        <li>Name: @order.Name</li>
-        <li>Dates: @order.Dates</li>
-        <li>Price: @order.Price</li>
-        <li>Payment Received: @order.HasPaid</li>
-        
-        <li>Details:</li>
-        <ul>
-            @foreach (var detail in order.Details)
-            {
-                <li>@detail.Key @detail.Value</li>
-            }
-        </ul>
+      <li>@detail.Key @detail.Value</li>
     }
-</ul>
+  </ul>
+  <p>Total: $@order.Price.00</p>
+  <p>Payment Received: @order.HasPaid</p>
+}
 
 <button><a href="/vendors">Return to Vendors List</a></button>
 <button><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></button>
