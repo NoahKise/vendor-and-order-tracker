@@ -30,5 +30,16 @@ namespace Pierre.Tests
       Order newOrder = new(name, dates, details);
       Assert.AreEqual(newOrder.Name, name);
     }
+
+    [TestMethod]
+    public void SetOrderDetails_SetsOrderProperties()
+    {
+      string name = "unique order";
+      string dates = "every monday morning";
+      Dictionary<int, string> details = new Dictionary<int, string>() { { 30, "croissants" }, { 10, "baguettes" } };
+      Order newOrder = new("usual", dates, details);
+      newOrder.Name = name;
+      Assert.AreEqual(newOrder.Name, name);
+    }
   }
 }
