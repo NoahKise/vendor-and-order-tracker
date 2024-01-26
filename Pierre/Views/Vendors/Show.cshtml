@@ -9,9 +9,18 @@
 <ul>
     @foreach (Order order in @Model["orders"])
     {
-        <li>@order.Name</li>
-        <li>@order.Dates</li>
-        <li>@order.Price</li>
+        <li>Name: @order.Name</li>
+        <li>Dates: @order.Dates</li>
+        <li>Price: @order.Price</li>
+        <li>Payment Received: @order.HasPaid</li>
+        
+        <li>Details:</li>
+        <ul>
+            @foreach (var detail in order.Details)
+            {
+                <li>@detail.Key @detail.Value</li>
+            }
+        </ul>
     }
 </ul>
 

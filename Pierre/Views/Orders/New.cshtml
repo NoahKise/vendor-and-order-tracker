@@ -15,7 +15,8 @@
   <label for="orderPrice">Price</label>
   <input id="orderPrice" name="orderPrice" type="number">
 
-  <input type="checkbox" id="orderHasPaid" name="orderHasPaid">
+  <input type="hidden" name="orderHasPaid" value="false">
+  <input type="checkbox" id="orderHasPaid" name="orderHasPaid" onclick="updateHiddenField(this)">
   <label for="orderHasPaid">Payment Received</label><br>
 
   <div id="detailsContainer">
@@ -30,16 +31,20 @@
   <br>
   <br>
   <button type="submit">Add order</button>
-
-  <script>
-    function addDetailField() {
-      const container = document.getElementById('detailsContainer');
-      const newEntry = document.createElement('div');
-      newEntry.innerHTML = `
-                <input name="detailQuantities" type="number" placeholder="Quantity">
-                <input name="detailItems" type="text" placeholder="Item">
-            `;
-      container.appendChild(newEntry);
-    }
-  </script>
 </form>
+
+<script>
+  function addDetailField() {
+    const container = document.getElementById('detailsContainer');
+    const newEntry = document.createElement('div');
+    newEntry.innerHTML = `
+  <input name="detailQuantities" type="number" placeholder="Quantity">
+  <input name="detailItems" type="text" placeholder="Item">
+  `;
+    container.appendChild(newEntry);
+  }
+  function updateHiddenField(checkbox) {
+    const hiddenInput = document.querySelector('input[name="orderHasPaid"]');
+    hiddenInput.value = checkbox.checked ? 'true' : 'false';
+  }
+</script>
