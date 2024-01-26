@@ -43,7 +43,10 @@ namespace Pierre.Tests
     public void AddOrder_AddOrderToOrders_List()
     {
         Vendor suziesCafe = new("Suzie's Cafe", "123 fake st.");
-        Order newOrder = new("30 croissants");
+        string name = "usual";
+        string dates = "every monday morning";
+        Dictionary<int, string> details = new Dictionary<int, string>() { {30, "croissants"}, {10, "baguettes"} };
+        Order newOrder = new(name, dates, details);
         List<Order> expected = new List<Order> {newOrder};
         suziesCafe.AddOrder(newOrder);
         CollectionAssert.AreEqual(expected, suziesCafe.Orders);
