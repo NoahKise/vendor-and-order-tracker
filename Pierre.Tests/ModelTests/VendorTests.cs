@@ -16,7 +16,7 @@ namespace Pierre.Tests
     [TestMethod]
     public void VendorConstructor_CreateInstanceOfVendor_Vendor()
     {
-      Vendor newVendor = new("Suzie's Cafe");
+      Vendor newVendor = new("Suzie's Cafe", "123 fake st.");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
 
@@ -24,7 +24,8 @@ namespace Pierre.Tests
     public void GetVendorDetails_ReturnsVendorDetails_String()
     {
       string name = "Suzie's Cafe";
-      Vendor suziesCafe = new(name);
+      string location = "123 fake st.";
+      Vendor suziesCafe = new(name, location);
       Assert.AreEqual(suziesCafe.Name, name);
     }
 
@@ -32,7 +33,8 @@ namespace Pierre.Tests
     public void SetVendorDetails_SetsVendorProperties()
     {
       string name = "New and Improved Suzie's Cafe";
-      Vendor suziesCafe = new("Suzie's Cafe");
+      string location = "123 fake st.";
+      Vendor suziesCafe = new("Suzie's Cafe", location);
       suziesCafe.Name = name;
       Assert.AreEqual(suziesCafe.Name, name);
     }
@@ -40,7 +42,7 @@ namespace Pierre.Tests
     [TestMethod]
     public void AddOrder_AddOrderToOrders_List()
     {
-        Vendor suziesCafe = new("Suzie's Cafe");
+        Vendor suziesCafe = new("Suzie's Cafe", "123 fake st.");
         Order newOrder = new("30 croissants");
         List<Order> expected = new List<Order> {newOrder};
         suziesCafe.AddOrder(newOrder);
@@ -50,8 +52,8 @@ namespace Pierre.Tests
     [TestMethod]
     public void FindVendor_ReturnsVendorById_Vendor()
     {
-        Vendor suziesCafe = new("Suzie's Cafe");
-        Vendor starbucks = new("Starbucks");
+        Vendor suziesCafe = new("Suzie's Cafe", "123 fake st.");
+        Vendor starbucks = new("Starbucks", "404 corporate st.");
         Vendor foundVendor = Vendor.FindVendor(2);
         Assert.AreEqual(starbucks, foundVendor);
     }
@@ -59,8 +61,8 @@ namespace Pierre.Tests
     [TestMethod]
     public void GetAllVendors_ReturnsInstances_List()
     {
-        Vendor suziesCafe = new("Suzie's Cafe");
-        Vendor starbucks = new("Starbucks");
+        Vendor suziesCafe = new("Suzie's Cafe", "123 fake st.");
+        Vendor starbucks = new("Starbucks", "404 corporate st.");
         List<Vendor> expected = new List<Vendor> {suziesCafe, starbucks};
         CollectionAssert.AreEqual(expected, Vendor.GetAll());
     }
