@@ -160,3 +160,18 @@ hr {
   background-color: #FBE304;
   margin-bottom: 20px;
 }
+
+#bienvenue {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+#homePage {
+  text-align: justify;
+  width: 85vw;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
