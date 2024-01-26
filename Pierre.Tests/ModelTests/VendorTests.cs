@@ -46,7 +46,9 @@ namespace Pierre.Tests
         string name = "usual";
         string dates = "every monday morning";
         Dictionary<int, string> details = new Dictionary<int, string>() { {30, "croissants"}, {10, "baguettes"} };
-        Order newOrder = new(name, dates, details);
+        int price = 130;
+        bool hasPaid = true;
+        Order newOrder = new(name, dates, details, price, hasPaid);
         List<Order> expected = new List<Order> {newOrder};
         suziesCafe.AddOrder(newOrder);
         CollectionAssert.AreEqual(expected, suziesCafe.Orders);

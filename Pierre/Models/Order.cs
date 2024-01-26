@@ -9,12 +9,16 @@ namespace Pierre.Models
         public int Id { get; }
         public string Dates { get; set; }
         public Dictionary<int, string> Details { get; set; }
+        public int Price { get; set; }
+        public bool HasPaid { get; set; }
 
-        public Order(string name, string dates, Dictionary<int, string> details)
+        public Order(string name, string dates, Dictionary<int, string> details, int price, bool hasPaid)
         {
             Name = name;
             Dates = dates;
             Details = details;
+            Price = price;
+            HasPaid = hasPaid;
             _instances.Add(this);
             Id = _instances.Count;
         }
