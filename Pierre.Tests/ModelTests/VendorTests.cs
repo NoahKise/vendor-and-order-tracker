@@ -14,5 +14,13 @@ namespace Pierre.Tests
       Vendor newVendor = new("Suzie's Cafe");
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
+
+    [TestMethod]
+    public void GetVendorDetails_ReturnsVendorDetails_String()
+    {
+      string name = "Suzie's Cafe";
+      Vendor suziesCafe = new(name);
+      Assert.AreEqual(suziesCafe.Name, name);
+    }
   }
 }
