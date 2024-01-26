@@ -6,6 +6,7 @@
 <div id="ordersList">
   <h3>@Model["vendor"].Name Orders</h3>
   <p id="deliverTo">Deliver To: @Model["vendor"].Location</p>
+  <button><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></button>
 
   @foreach (Order order in @Model["orders"])
   {
@@ -18,7 +19,7 @@
           <li>@detail.Key @detail.Value</li>
         }
       </ul>
-      <p>Total: $@order.Price.00</p>
+      <p class="total">Total: $@order.Price.00</p>
       @if (@order.HasPaid == false)
       {
         <p id="false">NOT PAID</p>
@@ -27,7 +28,4 @@
       }
     </div>
   }
-
-  <button><a href="/vendors">Return to Vendors List</a></button>
-  <button><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></button>
 </div>

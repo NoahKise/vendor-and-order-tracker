@@ -1,45 +1,45 @@
 @{
   Layout = "_Layout";
 }
-
-<form action="/vendors/@Model.Id/orders" method="post">
-  <h3>New @Model.Name Order</h3>
-  <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
-
-  <label for="orderName">Name</label>
-  <input id="orderName" name="orderName" type="text">
-
-  <label for="orderDates">Date(s)</label>
-  <input id="orderDates" name="orderDates" type="text">
-
-  <label for="orderPrice">Price</label>
-  <input id="orderPrice" name="orderPrice" type="number">
-
-  <input type="hidden" name="orderHasPaid" value="false">
-  <input type="checkbox" id="orderHasPaid" name="orderHasPaid" onclick="updateHiddenField(this)">
-  <label for="orderHasPaid">Payment Received</label><br>
-
-  <div id="detailsContainer">
-    <label>Items</label>
-    <div class="detailEntry">
-      <input name="detailQuantities" type="number" placeholder="Quantity">
-      <input name="detailItems" type="text" placeholder="Item">
+<div id="orderForm">
+  <form action="/vendors/@Model.Id/orders" method="post">
+    <h3>New <em>@Model.Name</em> Order</h3>
+    <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
+    
+    <label for="orderName"></label>
+    <input id="orderName" name="orderName" type="text" placeholder="Name">
+    <br>
+    <label for="orderDates"></label>
+    <input id="orderDates" name="orderDates" type="text" placeholder="Date(s)">
+    <br>
+    <label for="orderPrice"></label>
+    <input id="orderPrice" name="orderPrice" type="number" placeholder="Price">
+    <br>
+    <input type="hidden" name="orderHasPaid" value="false">
+    <input type="checkbox" id="orderHasPaid" name="orderHasPaid" onclick="updateHiddenField(this)">
+    <label for="orderHasPaid">Payment Received</label><br>
+    <br>
+    <div id="detailsContainer">
+      <label>Items</label>
+      <div class="detailEntry">
+        <input class="quantity" name="detailQuantities" type="number" placeholder="Quantity">
+        <input class="item" name="detailItems" type="text" placeholder="Item">
+      </div>
     </div>
-  </div>
 
-  <button type="button" onclick="addDetailField()">Add Detail</button>
-  <br>
-  <br>
-  <button type="submit">Add order</button>
-</form>
+    <button type="button" onclick="addDetailField()">Add Item</button>
+    <br>
+    <button type="submit">Complete order</button>
+  </form>
+</div>
 
 <script>
   function addDetailField() {
     const container = document.getElementById('detailsContainer');
     const newEntry = document.createElement('div');
     newEntry.innerHTML = `
-  <input name="detailQuantities" type="number" placeholder="Quantity">
-  <input name="detailItems" type="text" placeholder="Item">
+  <input name="detailQuantities" class="quantity" type="number" placeholder="Quantity">
+  <input name="detailItems" class="item" type="text" placeholder="Item">
   `;
     container.appendChild(newEntry);
   }
