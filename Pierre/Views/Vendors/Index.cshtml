@@ -3,14 +3,15 @@
 }
 
 @using Pierre.Models;
+<div id="vendorsList">
+  <h2>Vendors</h2>
 
-<h2>Vendors</h2>
+  @foreach (Vendor vendor in Model)
+  {
+    <h3><a href="/vendors/@vendor.Id">@vendor.Name</a></h3>
+  }
 
-@foreach(Vendor vendor in Model)
-{
-  <h3><a href="/vendors/@vendor.Id">@vendor.Name</a></h3>
-}
-
-<a href="/vendors/new">
-  <h4>New Vendor Form</h4>
-</a>
+  <a href="/vendors/new">
+    <h4>New Vendor Form</h4>
+  </a>
+</div>
