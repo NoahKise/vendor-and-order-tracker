@@ -2,10 +2,10 @@
   Layout = "_Layout";
 }
 <div id="orderForm">
-  <form action="/vendors/@Model.Id/orders" method="post">
+  <form action="/vendors/@Model.Id/orders" method="post" onsubmit="validateOrderForm()">
     <h3>New <em>@Model.Name</em> Order</h3>
     <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
-    
+
     <label for="orderName"></label>
     <input id="orderName" name="orderName" type="text" placeholder="Name">
     <br>
@@ -29,6 +29,7 @@
 
     <button type="button" onclick="addDetailField()">Add Item</button>
     <br>
+    <p id="errorMessage2" style="color: red; display: none;">Please fill out each required field.</p>
     <button type="submit">Complete order</button>
   </form>
 </div>
@@ -43,8 +44,24 @@
   `;
     container.appendChild(newEntry);
   }
+
   function updateHiddenField(checkbox) {
     const hiddenInput = document.querySelector('input[name="orderHasPaid"]');
     hiddenInput.value = checkbox.checked ? 'true' : 'false';
+  }
+  
+  function validateOrderForm() {
+    const orderNameField = document.getElementById('orderName');
+    const orderDatesField = document.getElementById('orderDates');
+    const orderPriceField = document.getElementById('orderPrice');
+    const errorMessage = document.getElementById('errorMessage2');
+    if (orderNameField.value.trim() === "" ||
+      orderDatesField.value.trim() === "" ||
+      orderPriceField.value.trim() === "") {
+      errorMessage.style.display = "block";
+      event.preventDefault();
+    } else {
+      errorMessage.style.display = "none";
+    }
   }
 </script>

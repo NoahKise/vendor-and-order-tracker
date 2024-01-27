@@ -2,14 +2,29 @@
   Layout = "_Layout";
 }
 <div id="vendorForm">
-  <form action="/vendors" method="post">
+  <form action="/vendors" method="post" onsubmit="validateForm()">
     <h2>New Vendor</h2>
-    <label for="vendorName"></label>
-    <input id="vendorName" name="vendorName" type="text" placeholder="Name">
+    <label for="vendorName">Name:</label>
+    <input id="vendorName" name="vendorName" type="text" placeholder="Name" required>
     <br>
-    <label for="vendorLocation"></label>
+    <label for="vendorLocation">Location:</label>
     <input id="vendorLocation" name="vendorLocation" type="text" placeholder="Location">
     <br>
+    <p id="errorMessage" style="color: red; display: none;">Please fill out each required field.</p>
     <button type="submit">Submit</button>
   </form>
+
+  <script>
+    function validateForm() {
+      const nameField = document.getElementById("vendorName");
+      const locationField = document.getElementById("vendorLocation");
+      const errorMessage = document.getElementById("errorMessage");
+      if (nameField.value.trim() === "" || locationField.value.trim() === "") {
+        errorMessage.style.display = "block";
+        event.preventDefault();
+      } else {
+        errorMessage.style.display = "none";
+      }
+    }
+  </script>
 </div>
