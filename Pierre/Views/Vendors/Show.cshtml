@@ -4,7 +4,7 @@
 
 @using Pierre.Models;
 <div id="ordersList">
-  <h3>@Model["vendor"].Name Orders</h3>
+  <h3><strong>@Model["vendor"].Name</strong> Orders</h3>
   <p id="deliverTo">Deliver To: @Model["vendor"].Location</p>
   <button><a href='/vendors/@Model["vendor"].Id/orders/new'>Add a new order</a></button>
 

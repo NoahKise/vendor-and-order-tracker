@@ -3,7 +3,7 @@
 }
 <div id="orderForm">
   <form action="/vendors/@Model.Id/orders" method="post" onsubmit="validateOrderForm()">
-    <h3>New <em>@Model.Name</em> Order</h3>
+    <h3>New <strong>@Model.Name</strong> Order</h3>
     <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
 
     <label for="orderName"></label>
@@ -49,7 +49,7 @@
     const hiddenInput = document.querySelector('input[name="orderHasPaid"]');
     hiddenInput.value = checkbox.checked ? 'true' : 'false';
   }
-  
+
   function validateOrderForm() {
     const orderNameField = document.getElementById('orderName');
     const orderDatesField = document.getElementById('orderDates');
