@@ -10,4 +10,5 @@
   <p>To view a list of vendors, click the checklist icon in the upper right corner. On that page, you will find a link to a form to add new vendors to your master list.</p>
   <p>Clicking on the name of an individual vendor will take you to a page containing each of their orders, as well as a link to a form to add new orders for the selected vendor.</p>
   <p>Remember mon ami, if you ever get confused, click the bread icon to navigate back to these instructions. Bon chance !</p>
+  <p id="bug">*Near the end of the day I realized a pretty significant bug, which is that if you attempt to add two different items to an order and enter the same quantity for each, the program will crash. This is because the orders are currently being stored as a dictionary, with quantities being keys and item names being values. Because you can't have matching keys in a dictionary, the program crashes. I am planning to refactor the code to store the items in a list instead of a dictionary, but at time of submission this bug persists.*</p>
 </div>
